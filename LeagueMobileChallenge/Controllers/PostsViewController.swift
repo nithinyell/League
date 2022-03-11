@@ -82,8 +82,5 @@ extension PostsViewController: UITableViewDataSource {
 extension PostsViewController: PostsModelDelegate {
     func fetchLatestPosts(userPosts: [UserPost]?) {
         self.userPosts = userPosts
-        print("posts", userPosts)
     }
 }
-
-
