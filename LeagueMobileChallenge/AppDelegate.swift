@@ -17,16 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        APIController.shared.fetchUserToken(userName: "nithin", password: "secret") { token, error in
-            if let token = token {
-                print("***", token)
-            }
-        }
-        
-        APIController.shared.fetchUsers { <#Any?#>, <#Error?#> in
-            <#code#>
-        }
-        
         // Override point for customization after application launch.
         return true
     }
