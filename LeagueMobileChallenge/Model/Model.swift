@@ -16,10 +16,6 @@ struct APIKey: Codable {
 }
 
 // MARK: Users
-struct Users: Codable {
-    let users: [User]?
-}
-
 struct User: Codable {
     let id: Int?
     let name: String?
@@ -31,13 +27,15 @@ struct Avatar: Codable {
 }
 
 // MARK: Posts
-struct Posts: Codable {
-    
-}
-
 struct Post: Codable {
     let userId: Int?
     let id: Int?
     let title: String?
     let body: String?
+}
+
+// MARK: UserPosts
+struct UserPost: Codable {
+    let user: User?
+    let post: Post?
 }

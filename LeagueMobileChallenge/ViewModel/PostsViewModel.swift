@@ -9,22 +9,36 @@
 import Foundation
 import Combine
 
-protocol PostsModel: AnyObject {
-    func fetchLatestPosts()
+protocol PostsModelDelegate: AnyObject {
+    func fetchLatestPosts(userPosts: [UserPost]?)
 }
 
 class PostsViewModel {
     
     // MARK: Properties
-    weak var postsModel: PostsModel?
+    weak var postsModel: PostsModelDelegate?
     private let interactorDelegate: InteractorDelegate
-    private let subscribers = Set<AnyCancellable>()
+    var subscribers = Set<AnyCancellable>()
     
     init(interactorDelegate: InteractorDelegate) {
         self.interactorDelegate = interactorDelegate
     }
     
     func loadPosts() {
+        interactorDelegate.fetchUsersPosts().sink { _ in
+        } receiveValue: { [weak self] (users, posts) in
+            let posts = self?.transformPosts(users: users, posts: posts)
+            self?.postsModel?.fetchLatestPosts(userPosts: posts)
+        }.store(in: &subscribers)
+    }
+    
+    func transformPosts(users: [User], posts: [Post]) -> [UserPost]? {
+    
+        var userPosts = [UserPost]()
+        posts.forEach { post in
+            userPosts.append(UserPost(user: users.filter{$0.id == post.userId}.first, post: post))
+        }
         
+        return userPosts
     }
 }

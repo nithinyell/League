@@ -13,6 +13,7 @@ protocol InteractorDelegate {
     func fetchAPIKey() -> AnyPublisher<APIKey, Error>
     func fetchUsers() -> AnyPublisher<[User], Error>
     func fetchPosts() -> AnyPublisher<[Post], Error>
+    func fetchUsersPosts() -> AnyPublisher<([User], [Post]), Error>
 }
 
 class Interactor: InteractorDelegate {
@@ -30,14 +31,14 @@ class Interactor: InteractorDelegate {
             .eraseToAnyPublisher()
     }
 
-    func fetchUsers() -> AnyPublisher<[User], Error> {
+     func fetchUsers() -> AnyPublisher<[User], Error> {
        
         guard let url = URL(string: Constants.userAPI) else {
             return AnyPublisher(Fail<[User], Error>(error: URLError(.badURL)))
         }
         
         var request = URLRequest(url: url)
-        request.setValue(Defaults.apiKey, forHTTPHeaderField: "x-access-token")
+         request.setValue(Defaults.apiKey?.fromBase64(), forHTTPHeaderField: "x-access-token")
         
         return URLSession.shared.dataTaskPublisher(for: request)
             .map{$0.data}
@@ -46,19 +47,25 @@ class Interactor: InteractorDelegate {
             .eraseToAnyPublisher()
     }
 
-    func fetchPosts() -> AnyPublisher<[Post], Error> {
+     func fetchPosts() -> AnyPublisher<[Post], Error> {
 
         guard let url = URL(string: Constants.postAPI) else {
             return AnyPublisher(Fail<[Post], Error>(error: URLError(.badURL)))
         }
         
         var request = URLRequest(url: url)
-        request.setValue(Defaults.apiKey, forHTTPHeaderField: "x-access-token")
+         request.setValue(Defaults.apiKey?.fromBase64(), forHTTPHeaderField: "x-access-token")
         
         return URLSession.shared.dataTaskPublisher(for: request)
             .map{$0.data}
             .decode(type: [Post].self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.global(qos: .background))
             .eraseToAnyPublisher()
+    }
+    
+    func fetchUsersPosts() -> AnyPublisher<([User], [Post]), Error> {
+        Publishers.Zip(fetchUsers(), fetchPosts()).map { (users, posts) in
+            return (users, posts)
+        }.eraseToAnyPublisher()
     }
 }

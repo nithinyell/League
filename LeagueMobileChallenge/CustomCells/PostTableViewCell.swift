@@ -10,6 +10,12 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
     
+    var userPostData: UserPost? {
+        didSet {
+            dataBind()
+        }
+    }
+    
     lazy var userAvatar: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -63,5 +69,12 @@ class PostTableViewCell: UITableViewCell {
             userPost.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
             userPost.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
         ])
+    }
+    
+    private func dataBind() {
+        guard let post = self.userPostData else { return }
+        
+        userName.text = post.user?.name
+        userPost.text = post.post?.title
     }
 }

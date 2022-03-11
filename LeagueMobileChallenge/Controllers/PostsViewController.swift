@@ -11,10 +11,18 @@ import UIKit
 class PostsViewController: UIViewController {
  
     @IBOutlet weak var postsTableView: UITableView!
-
+    private let postsViewModel = PostsViewModel(interactorDelegate: Interactor())
+    private var userPosts: [UserPost]? {
+        didSet {
+            reloadTableViewData()
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        postsViewModel.postsModel = self
+        postsViewModel.loadPosts()
         navigationBarSetUp()
         logoutbuttonSetUp()
         tableViewSetUp()
@@ -39,6 +47,12 @@ class PostsViewController: UIViewController {
         postsTableView.rowHeight = UITableView.automaticDimension
         postsTableView.estimatedRowHeight = 80
     }
+    
+    private func reloadTableViewData() {
+        DispatchQueue.main.async { [weak self] in
+            self?.postsTableView.reloadData()
+        }
+    }
 }
 
 extension PostsViewController: UITableViewDelegate {
@@ -47,8 +61,7 @@ extension PostsViewController: UITableViewDelegate {
 
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? PostTableViewCell {
             
-            cell.userPost.text = ""
-            cell.userName.text = ""
+            cell.userPostData = userPosts?[indexPath.row]
             return cell
         }
         
@@ -62,6 +75,15 @@ extension PostsViewController: UITableViewDelegate {
 
 extension PostsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return userPosts?.count ?? 0
     }
 }
+
+extension PostsViewController: PostsModelDelegate {
+    func fetchLatestPosts(userPosts: [UserPost]?) {
+        self.userPosts = userPosts
+        print("posts", userPosts)
+    }
+}
+
+
