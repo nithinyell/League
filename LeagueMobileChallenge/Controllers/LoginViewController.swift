@@ -10,7 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var onPressLogin: UIButton!
+    @IBOutlet weak var loginInButton: UIButton!
     let loginInteractor = LoginInteractor()
 
     override func viewDidLoad() {
@@ -25,6 +25,13 @@ class LoginViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        designLoginButton()
+    }
+    
     @IBAction func onPressLogin(_ sender: Any) {
         loginInteractor.fecthApiKey()
     }
@@ -37,6 +44,13 @@ class LoginViewController: UIViewController {
                     self?.navigationController?.pushViewController(postsViewController, animated: true)
             }
         }
+    }
+    
+    private func designLoginButton() {
+        loginInButton.backgroundColor = .clear
+        loginInButton.layer.cornerRadius = 5
+        loginInButton.layer.borderWidth = 1
+        loginInButton.layer.borderColor = UIColor.black.cgColor
     }
 }
 

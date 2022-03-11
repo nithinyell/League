@@ -24,6 +24,7 @@ class PostTableViewCell: UITableViewCell {
     
     lazy var userName: UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20.0)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
@@ -31,6 +32,7 @@ class PostTableViewCell: UITableViewCell {
     
     lazy var userPostTitle: UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 17.5)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
@@ -38,6 +40,7 @@ class PostTableViewCell: UITableViewCell {
     
     lazy var userPostBody: UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 15.0)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
@@ -65,8 +68,8 @@ class PostTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             userAvatar.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
             userAvatar.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            userAvatar.widthAnchor.constraint(equalToConstant: 100),
-            userAvatar.heightAnchor.constraint(equalToConstant: 100),
+            userAvatar.widthAnchor.constraint(equalToConstant: 75),
+            userAvatar.heightAnchor.constraint(equalToConstant: 75),
 
             userName.topAnchor.constraint(equalTo: userAvatar.topAnchor),
             userName.heightAnchor.constraint(equalTo: userAvatar.heightAnchor),

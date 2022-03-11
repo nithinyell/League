@@ -17,10 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f47-Ot-BX8">
-                                <rect key="frame" x="157.5" y="318" width="60" height="31"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backGround" translatesAutoresizingMaskIntoConstraints="NO" id="b6c-nF-v7Z">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f47-Ot-BX8">
+                                <rect key="frame" x="93" y="309.5" width="189.5" height="48"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Login"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Login As Guest">
+                                    <fontDescription key="titleFontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="26"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="onPressLogin:" destination="xiP-qO-1Xy" eventType="touchUpInside" id="Kza-b1-Kfm"/>
                                 </connections>
@@ -29,13 +36,17 @@
                         <viewLayoutGuide key="safeArea" id="DiZ-ik-0I9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="f47-Ot-BX8" firstAttribute="centerX" secondItem="biv-kN-fqN" secondAttribute="centerX" id="2YK-UI-1Hl"/>
-                            <constraint firstItem="f47-Ot-BX8" firstAttribute="centerY" secondItem="biv-kN-fqN" secondAttribute="centerY" id="HqP-aP-rKN"/>
+                            <constraint firstItem="b6c-nF-v7Z" firstAttribute="trailing" secondItem="DiZ-ik-0I9" secondAttribute="trailing" id="BAj-ph-nwa"/>
+                            <constraint firstItem="b6c-nF-v7Z" firstAttribute="top" secondItem="DiZ-ik-0I9" secondAttribute="top" id="XaN-AN-Nvo"/>
+                            <constraint firstItem="b6c-nF-v7Z" firstAttribute="bottom" secondItem="DiZ-ik-0I9" secondAttribute="bottom" id="awo-bP-OxK"/>
+                            <constraint firstItem="f47-Ot-BX8" firstAttribute="centerY" secondItem="biv-kN-fqN" secondAttribute="centerY" id="cCe-np-d58"/>
+                            <constraint firstItem="b6c-nF-v7Z" firstAttribute="leading" secondItem="DiZ-ik-0I9" secondAttribute="leading" id="gMS-4p-TiZ"/>
+                            <constraint firstItem="f47-Ot-BX8" firstAttribute="centerX" secondItem="biv-kN-fqN" secondAttribute="centerX" id="zfX-h1-JdC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yyO-5a-pip"/>
                     <connections>
-                        <outlet property="onPressLogin" destination="f47-Ot-BX8" id="uTq-8B-Ij0"/>
+                        <outlet property="loginInButton" destination="f47-Ot-BX8" id="Jto-LS-CqT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iJY-O2-dh2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -107,6 +118,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="backGround" width="156" height="131"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

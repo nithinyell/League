@@ -29,6 +29,7 @@ class PostsViewController: UIViewController {
     }
     
     private func navigationBarSetUp() {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationItem.setHidesBackButton(true, animated: true)
         navigationItem.title = "Posts"
     }

@@ -37,7 +37,7 @@ extension URL {
         
         if let image = imageCache.object(forKey: self as AnyObject) as? UIImage {
             onSuccess(image)
-            print("USING CACHE")
+            print("Using Cache to Retrive User Avatar")
         } else {
             
             DispatchQueue.global(qos: .background).async {
@@ -46,7 +46,6 @@ extension URL {
                     if let image = UIImage(data: imageData) {
                         imageCache.setObject(image, forKey: self as AnyObject)
                         onSuccess(image)
-                        print("API CALL")
                     }
                 } catch {
                     onSuccess(nil)
