@@ -26,9 +26,38 @@ class LeagueMobileChallengeUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testLoginIn() {
+        XCUIApplication()/*@START_MENU_TOKEN@*/.staticTexts["Login As Guest"]/*[[".buttons[\"Login As Guest\"].staticTexts[\"Login As Guest\"]",".staticTexts[\"Login As Guest\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
     }
 
+    func testPostViews() {
+        let app = XCUIApplication()
+        let table = app.tables.element(boundBy: 0)
+        let lastCell = table.cells.element(boundBy: table.cells.count-1)
+        table.scrollToElement(element: lastCell)
+    }
+    
+    func testLogOut() {
+        let logoutButton = XCUIApplication().navigationBars["Posts"].buttons["Logout"]
+        logoutButton.tap()
+        logoutButton.tap()
+    }
+}
+
+extension XCUIElement {
+
+    func scrollToElement(element: XCUIElement) {
+        while !element.visible() {
+            swipeUp()
+        }
+    }
+
+    func visible() -> Bool {
+        guard self.exists && !self.frame.isEmpty else { return false }
+        return XCUIApplication().windows.element(boundBy: 0).frame.contains(self.frame)
+    }
+    
+    func forceTap() {
+           coordinate(withNormalizedOffset: CGVector(dx:0.5, dy:0.5)).tap()
+       }
 }

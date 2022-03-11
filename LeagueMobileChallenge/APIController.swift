@@ -6,6 +6,7 @@
 //  Copyright © 2019 Kelvin Lau. All rights reserved.
 //
 
+/*
 import Foundation
 import Alamofire
 
@@ -79,3 +80,4 @@ class APIController {
         }
     }
 }
+*/
