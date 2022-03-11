@@ -7,18 +7,62 @@
 //
 
 import Foundation
+import UIKit
+import Combine
+
+let imageCache = NSCache<AnyObject, AnyObject>()
 
 extension String {
-
+    
     func fromBase64() -> String? {
         guard let data = Data(base64Encoded: self) else {
             return nil
         }
-
+        
         return String(data: data, encoding: .utf8)
     }
-
+    
     func toBase64() -> String {
         return Data(self.utf8).base64EncodedString()
     }
+    
+    func asURL() -> URL? {
+        return URL(string: self) ?? nil
+    }
+}
+
+extension URL {
+    
+    func fetchImageFromURL(onSuccess: @escaping (UIImage?) -> Void) {
+        
+        if let image = imageCache.object(forKey: self as AnyObject) as? UIImage {
+            onSuccess(image)
+            print("USING CACHE")
+        } else {
+            
+            DispatchQueue.global(qos: .background).async {
+                do {
+                    let imageData = try Data(contentsOf: self)
+                    if let image = UIImage(data: imageData) {
+                        imageCache.setObject(image, forKey: self as AnyObject)
+                        onSuccess(image)
+                        print("API CALL")
+                    }
+                } catch {
+                    onSuccess(nil)
+                }
+            }
+        }
+    }
+}
+
+extension UIImageView {
+  
+    func makeRoundImageView(image: UIImage) {
+        self.contentMode = .scaleAspectFill
+        self.layer.cornerRadius = self.frame.height / 2
+        self.layer.masksToBounds = false
+        self.clipsToBounds = true
+        self.image = image
+  }
 }

@@ -19,9 +19,6 @@ class PostTableViewCell: UITableViewCell {
     lazy var userAvatar: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.borderWidth = 0.25
-        imageView.layer.masksToBounds = true
-        imageView.layer.borderColor = UIColor.black.cgColor
         return imageView
     }()
     
@@ -70,31 +67,38 @@ class PostTableViewCell: UITableViewCell {
             userAvatar.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             userAvatar.widthAnchor.constraint(equalToConstant: 100),
             userAvatar.heightAnchor.constraint(equalToConstant: 100),
-            userAvatar.bottomAnchor.constraint(equalTo: userPostTitle.topAnchor, constant: -20),
 
             userName.topAnchor.constraint(equalTo: userAvatar.topAnchor),
             userName.heightAnchor.constraint(equalTo: userAvatar.heightAnchor),
             userName.leadingAnchor.constraint(equalTo: userAvatar.trailingAnchor, constant: 10),
             
+            userPostTitle.topAnchor.constraint(equalTo: userAvatar.bottomAnchor, constant: 20),
             userPostTitle.leadingAnchor.constraint(equalTo: userAvatar.leadingAnchor),
             userPostTitle.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            userPostTitle.bottomAnchor.constraint(equalTo: userPostBody.topAnchor, constant: -10),
             
             userPostBody.topAnchor.constraint(equalTo: userPostTitle.bottomAnchor, constant: 10),
             userPostBody.leadingAnchor.constraint(equalTo: userPostTitle.leadingAnchor),
             userPostBody.trailingAnchor.constraint(equalTo: userPostTitle.trailingAnchor),
             userPostBody.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
         ])
-        
-        DispatchQueue.main.async { [weak self] in
-            self?.userAvatar.layer.cornerRadius = self?.userAvatar.frame.height ?? 0 / 2
-        }
     }
     
     private func dataBind() {
         guard let post = self.userPostData else { return }
         
-        userName.text = post.user?.name
-        userPostTitle.text = post.post?.title
-        userPostBody.text = post.post?.body
+        let imageUrl = post.user?.avatar?.large?.asURL()
+        imageUrl?.fetchImageFromURL(onSuccess: { (image) in
+            
+            if let image = image {
+                DispatchQueue.main.async { [weak self] in
+                    self?.userAvatar.makeRoundImageView(image: image)
+                }
+            }
+        })
+        
+        self.userName.text = post.user?.name
+        self.userPostTitle.text = post.post?.title
+        self.userPostBody.text = post.post?.body
     }
 }
