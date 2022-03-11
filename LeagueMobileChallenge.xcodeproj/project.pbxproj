@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1EBE4CCE27DB2834004DC073 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE4CCD27DB2834004DC073 /* Constants.swift */; };
 		1EBE4CD127DB29A1004DC073 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE4CD027DB29A1004DC073 /* LoginViewController.swift */; };
-		1EBE4CD427DB2D5F004DC073 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE4CD327DB2D5F004DC073 /* NetworkManager.swift */; };
 		1EBE4CD727DB3368004DC073 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE4CD627DB3368004DC073 /* Model.swift */; };
 		1EBE4CDA27DB358C004DC073 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE4CD927DB358C004DC073 /* Interactor.swift */; };
 		1EBE4CDD27DB4222004DC073 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE4CDC27DB4222004DC073 /* PostsViewModel.swift */; };
@@ -47,7 +46,6 @@
 /* Begin PBXFileReference section */
 		1EBE4CCD27DB2834004DC073 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1EBE4CD027DB29A1004DC073 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		1EBE4CD327DB2D5F004DC073 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		1EBE4CD627DB3368004DC073 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		1EBE4CD927DB358C004DC073 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		1EBE4CDC27DB4222004DC073 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
@@ -103,14 +101,6 @@
 				1EBE4CE627DB6120004DC073 /* PostsViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		1EBE4CD227DB2D18004DC073 /* NetworkManager */ = {
-			isa = PBXGroup;
-			children = (
-				1EBE4CD327DB2D5F004DC073 /* NetworkManager.swift */,
-			);
-			path = NetworkManager;
 			sourceTree = "<group>";
 		};
 		1EBE4CD527DB3343004DC073 /* Model */ = {
@@ -179,19 +169,18 @@
 		B6AC694D21E6578D0094A9B1 /* LeagueMobileChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				1EBE4CE827DB6BCB004DC073 /* CustomCells */,
-				1EBE4CDB27DB4210004DC073 /* ViewModel */,
-				1EBE4CD827DB3575004DC073 /* Interactors */,
 				B6AC695D21E6578F0094A9B1 /* Info.plist */,
 				B6AC69A121ECEC740094A9B1 /* APIController.swift */,
 				B6AC694E21E6578D0094A9B1 /* AppDelegate.swift */,
 				B6AC695821E6578F0094A9B1 /* Assets.xcassets */,
 				1EBE4CCF27DB2972004DC073 /* Controllers */,
+				1EBE4CE827DB6BCB004DC073 /* CustomCells */,
 				1ECF8B8027DB278A004D6E59 /* Helpers */,
-				1EBE4CD527DB3343004DC073 /* Model */,
-				1EBE4CD227DB2D18004DC073 /* NetworkManager */,
+				1EBE4CD827DB3575004DC073 /* Interactors */,
 				B6AC695A21E6578F0094A9B1 /* LaunchScreen.storyboard */,
 				B6AC695221E6578D0094A9B1 /* Main.storyboard */,
+				1EBE4CD527DB3343004DC073 /* Model */,
+				1EBE4CDB27DB4210004DC073 /* ViewModel */,
 			);
 			path = LeagueMobileChallenge;
 			sourceTree = "<group>";
@@ -349,7 +338,6 @@
 				1EBE4CD127DB29A1004DC073 /* LoginViewController.swift in Sources */,
 				1EBE4CEA27DB6BF1004DC073 /* PostTableViewCell.swift in Sources */,
 				B6AC69A221ECEC740094A9B1 /* APIController.swift in Sources */,
-				1EBE4CD427DB2D5F004DC073 /* NetworkManager.swift in Sources */,
 				1EBE4CD727DB3368004DC073 /* Model.swift in Sources */,
 				1EBE4CDD27DB4222004DC073 /* PostsViewModel.swift in Sources */,
 				1EBE4CE327DB58A3004DC073 /* Extensions.swift in Sources */,

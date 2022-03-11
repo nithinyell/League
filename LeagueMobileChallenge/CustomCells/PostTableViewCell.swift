@@ -10,6 +10,7 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
     
+    // MARK: Properties
     var userPostData: UserPost? {
         didSet {
             dataBind()
@@ -58,7 +59,8 @@ class PostTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
- 
+    
+    /// Configre the Table View Cell
     private func configureUI() {
         self.addSubview(userAvatar)
         self.addSubview(userName)
@@ -87,6 +89,7 @@ class PostTableViewCell: UITableViewCell {
         ])
     }
     
+    /// Data Binding to UI Elements
     private func dataBind() {
         guard let post = self.userPostData else { return }
         

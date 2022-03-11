@@ -18,6 +18,8 @@ protocol InteractorDelegate {
 
 class Interactor: InteractorDelegate {
     
+    ///  Publisher to fetch API Key
+    /// - Returns: Api Key of Type String
     func fetchAPIKey() -> AnyPublisher<APIKey, Error> {
         
         guard let url = URL(string: Constants.loginAPI) else {
@@ -30,7 +32,9 @@ class Interactor: InteractorDelegate {
             .receive(on: DispatchQueue.global(qos: .background))
             .eraseToAnyPublisher()
     }
-
+    
+    /// Publisher to fetch Users
+    /// - Returns: [User]
      func fetchUsers() -> AnyPublisher<[User], Error> {
        
         guard let url = URL(string: Constants.userAPI) else {
@@ -46,7 +50,9 @@ class Interactor: InteractorDelegate {
             .receive(on: DispatchQueue.global(qos: .background))
             .eraseToAnyPublisher()
     }
-
+    
+    /// Publisher to fetch Posts
+    /// - Returns: [Post]
      func fetchPosts() -> AnyPublisher<[Post], Error> {
 
         guard let url = URL(string: Constants.postAPI) else {
@@ -63,6 +69,8 @@ class Interactor: InteractorDelegate {
             .eraseToAnyPublisher()
     }
     
+    /// Publisher to fetch User Posts
+    /// - Returns: ([User], [Post])
     func fetchUsersPosts() -> AnyPublisher<([User], [Post]), Error> {
         Publishers.Zip(fetchUsers(), fetchPosts()).map { (users, posts) in
             return (users, posts)

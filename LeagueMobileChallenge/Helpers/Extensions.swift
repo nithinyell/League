@@ -14,6 +14,8 @@ let imageCache = NSCache<AnyObject, AnyObject>()
 
 extension String {
     
+    /// Convert Base64 to String
+    /// - Returns: String?
     func fromBase64() -> String? {
         guard let data = Data(base64Encoded: self) else {
             return nil
@@ -22,6 +24,8 @@ extension String {
         return String(data: data, encoding: .utf8)
     }
     
+    /// Converts Base64 to String
+    /// - Returns: String
     func toBase64() -> String {
         return Data(self.utf8).base64EncodedString()
     }
@@ -33,6 +37,8 @@ extension String {
 
 extension URL {
     
+    /// Fetch Images from URL; If Image exists in Cache, returns Cached Image else perform API Call
+    /// - Parameter onSuccess: returns UIImage
     func fetchImageFromURL(onSuccess: @escaping (UIImage?) -> Void) {
         
         if let image = imageCache.object(forKey: self as AnyObject) as? UIImage {

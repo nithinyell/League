@@ -10,6 +10,7 @@ import UIKit
 
 class PostsViewController: UIViewController {
  
+    // MARK: Properties
     @IBOutlet weak var postsTableView: UITableView!
     private let postsViewModel = PostsViewModel(interactorDelegate: Interactor())
     let refreshControl = UIRefreshControl()
@@ -66,6 +67,7 @@ class PostsViewController: UIViewController {
     }
 }
 
+// MARK: TableViewDelegate
 extension PostsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -84,12 +86,14 @@ extension PostsViewController: UITableViewDelegate {
     }
 }
 
+// MARK: TableViewDataSource
 extension PostsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userPosts?.count ?? 0
     }
 }
 
+// MARK: PostsViewController Custom Extensions
 extension PostsViewController: PostsModelDelegate {
     func fetchLatestPosts(userPosts: [UserPost]?) {
         DispatchQueue.main.async { [weak self] in
