@@ -11,6 +11,7 @@ import Combine
 
 protocol PostsModelDelegate: AnyObject {
     func fetchLatestPosts(userPosts: [UserPost]?)
+    func fetchLatestPostsFailed()
 }
 
 class PostsViewModel {
@@ -25,7 +26,13 @@ class PostsViewModel {
     }
     
     func loadPosts() {
-        interactorDelegate.fetchUsersPosts().sink { _ in
+        interactorDelegate.fetchUsersPosts().sink { completion in
+            switch completion {
+            case .finished:
+                break
+            case .failure( _):
+                self.postsModel?.fetchLatestPostsFailed()
+            }
         } receiveValue: { [weak self] (users, posts) in
             let posts = self?.transformPosts(users: users, posts: posts)
             self?.postsModel?.fetchLatestPosts(userPosts: posts)

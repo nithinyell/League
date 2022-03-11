@@ -48,8 +48,8 @@ class LoginViewController: UIViewController {
     
     private func designLoginButton() {
         loginInButton.backgroundColor = .clear
-        loginInButton.layer.cornerRadius = 5
-        loginInButton.layer.borderWidth = 1
+        loginInButton.layer.cornerRadius = 10
+        loginInButton.layer.borderWidth = 2.5
         loginInButton.layer.borderColor = UIColor.black.cgColor
     }
 }

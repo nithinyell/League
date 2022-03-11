@@ -12,6 +12,8 @@ class PostsViewController: UIViewController {
  
     @IBOutlet weak var postsTableView: UITableView!
     private let postsViewModel = PostsViewModel(interactorDelegate: Interactor())
+    let refreshControl = UIRefreshControl()
+
     private var userPosts: [UserPost]? {
         didSet {
             reloadTableViewData()
@@ -22,7 +24,7 @@ class PostsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         postsViewModel.postsModel = self
-        postsViewModel.loadPosts()
+        loadData()
         navigationBarSetUp()
         logoutbuttonSetUp()
         tableViewSetUp()
@@ -47,6 +49,14 @@ class PostsViewController: UIViewController {
     private func tableViewSetUp() {
         postsTableView.rowHeight = UITableView.automaticDimension
         postsTableView.estimatedRowHeight = 80
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(self.loadData), for: .valueChanged)
+        postsTableView.addSubview(refreshControl)
+    }
+    
+    @objc private func loadData() {
+        postsViewModel.loadPosts()
     }
     
     private func reloadTableViewData() {
@@ -82,6 +92,23 @@ extension PostsViewController: UITableViewDataSource {
 
 extension PostsViewController: PostsModelDelegate {
     func fetchLatestPosts(userPosts: [UserPost]?) {
-        self.userPosts = userPosts
+        DispatchQueue.main.async { [weak self] in
+            self?.userPosts = userPosts
+            self?.refreshControl.endRefreshing()
+        }
+    }
+    
+    func fetchLatestPostsFailed() {
+        DispatchQueue.main.async { [weak self] in
+            self?.refreshControl.endRefreshing()
+
+            let alert = UIAlertController(title: "Retry", message: "Failed to Load Posts", preferredStyle: UIAlertController.Style.alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { [weak self] (action: UIAlertAction!) in
+                self?.loadData()
+            }))
+            
+            self?.present(alert, animated: true, completion: nil)
+        }
     }
 }
