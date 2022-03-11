@@ -11,6 +11,7 @@
 * Solution Follows the best Architecture pattern called `MVVM Design`; Eliminates Massive View Controllers
 * Implemented `Combine` elegance of declarative programming
 * UI Renders both `Programatically` and also on `StoryBoards`. Used `NSLayoutConstraints`
+* Used `Optionals`, `Generics` & `Tuples`
 * Developed Custom `Network Model`
 * Network Layer implemented with `Dependency Injection` pattern
 * Utilized `GCD` for concurrency and offloading the heavy network tasks
