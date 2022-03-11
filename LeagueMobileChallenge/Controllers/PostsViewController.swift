@@ -44,6 +44,7 @@ class PostsViewController: UIViewController {
     
     @objc func logoutUser(){
         UserDefaults.standard.removeObject(forKey: Constants.APIKEY)
+        imageCache.removeAllObjects()
         navigationController?.popViewController(animated: false)
     }
     
