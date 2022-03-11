@@ -18,16 +18,31 @@ class LoginViewController: UIViewController {
 
         loginInteractor.interactorDelegate = Interactor()
         loginInteractor.loginStatus = self
+        
+        // MARK: Is User Loged-in
+        if let _ = Defaults.apiKey {
+            navigateToPostsViewController()
+        }
     }
     
     @IBAction func onPressLogin(_ sender: Any) {
-        
         loginInteractor.fecthApiKey()
+    }
+    
+    private func navigateToPostsViewController() {
+        
+        DispatchQueue.main.async { [weak self] in
+            
+            if let postsViewController = self?.storyboard?.instantiateViewController(withIdentifier: "PostsViewController") as? PostsViewController {
+                    self?.navigationController?.pushViewController(postsViewController, animated: true)
+            }
+        }
     }
 }
 
 extension LoginViewController: LoginStatus {
+    
     func loginStatus(success: Bool) {
-        print("LOGIN IS: ", success)
+        navigateToPostsViewController()
     }
 }

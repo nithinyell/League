@@ -12,4 +12,5 @@ struct Constants {
     static let loginAPI = BASE_URL + "login"
     static let postAPI = BASE_URL + "posts"
     static let userAPI = BASE_URL + "users"
+    static let APIKEY = "API_KEY"
 }

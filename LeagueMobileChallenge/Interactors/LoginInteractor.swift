@@ -22,7 +22,8 @@ class LoginInteractor {
 
         interactorDelegate?.fetchAPIKey().sink(receiveCompletion: { completion in
         }, receiveValue: { [weak self] apiKey in
-            print("*** API KEY", apiKey)
+            Defaults.apiKey = apiKey.key.toBase64()
+            print("API KEY", apiKey.key)
             self?.loginStatus?.loginStatus(success: true)
         }).store(in: &subscribers)
     }

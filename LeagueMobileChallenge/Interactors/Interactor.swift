@@ -37,7 +37,7 @@ class Interactor: InteractorDelegate {
         }
         
         var request = URLRequest(url: url)
-        request.setValue("", forHTTPHeaderField: "x-access-token")
+        request.setValue(Defaults.apiKey, forHTTPHeaderField: "x-access-token")
         
         return URLSession.shared.dataTaskPublisher(for: request)
             .map{$0.data}
@@ -53,7 +53,7 @@ class Interactor: InteractorDelegate {
         }
         
         var request = URLRequest(url: url)
-        request.setValue("", forHTTPHeaderField: "x-access-token")
+        request.setValue(Defaults.apiKey, forHTTPHeaderField: "x-access-token")
         
         return URLSession.shared.dataTaskPublisher(for: request)
             .map{$0.data}

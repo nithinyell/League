@@ -8,10 +8,10 @@
 
 // MARK: API KEY
 struct APIKey: Codable {
-    let apiKey: String
+    let key: String
     
     enum CodingKeys: String, CodingKey {
-        case apiKey = "api_key"
+        case key = "api_key"
     }
 }
 
