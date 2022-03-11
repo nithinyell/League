@@ -18,6 +18,17 @@ protocol InteractorDelegate {
 
 class Interactor: InteractorDelegate {
     
+    /// Generic Build Request to map and decode data
+    /// - Returns: Generic T
+    func buildRequest<T: Decodable>(_ request: URLRequest) -> AnyPublisher<T, Error> {
+        let dataTaskPublisher = URLSession.shared.dataTaskPublisher(for: request)
+            .map{ $0.data }
+            .decode(type: T.self, decoder: JSONDecoder())
+            .eraseToAnyPublisher()
+        
+        return dataTaskPublisher
+    }
+    
     ///  Publisher to fetch API Key
     /// - Returns: Api Key of Type String
     func fetchAPIKey() -> AnyPublisher<APIKey, Error> {
@@ -26,10 +37,8 @@ class Interactor: InteractorDelegate {
             return AnyPublisher(Fail<APIKey, Error>(error: URLError(.badURL)))
         }
         
-        return URLSession.shared.dataTaskPublisher(for: url)
-            .map({$0.data})
-            .decode(type: APIKey.self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.global(qos: .background))
+        let request = URLRequest(url: url)
+        return buildRequest(request).receive(on: DispatchQueue.global(qos: .background))
             .eraseToAnyPublisher()
     }
     
@@ -44,12 +53,9 @@ class Interactor: InteractorDelegate {
         var request = URLRequest(url: url)
          request.setValue(Defaults.apiKey?.fromBase64(), forHTTPHeaderField: "x-access-token")
         
-        return URLSession.shared.dataTaskPublisher(for: request)
-            .map{$0.data}
-            .decode(type: [User].self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.global(qos: .background))
-            .eraseToAnyPublisher()
-    }
+         return buildRequest(request).receive(on: DispatchQueue.global(qos: .background))
+             .eraseToAnyPublisher()
+     }
     
     /// Publisher to fetch Posts
     /// - Returns: [Post]
@@ -62,11 +68,8 @@ class Interactor: InteractorDelegate {
         var request = URLRequest(url: url)
          request.setValue(Defaults.apiKey?.fromBase64(), forHTTPHeaderField: "x-access-token")
         
-        return URLSession.shared.dataTaskPublisher(for: request)
-            .map{$0.data}
-            .decode(type: [Post].self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.global(qos: .background))
-            .eraseToAnyPublisher()
+         return buildRequest(request).receive(on: DispatchQueue.global(qos: .background))
+             .eraseToAnyPublisher()
     }
     
     /// Publisher to fetch User Posts
