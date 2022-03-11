@@ -18,6 +18,8 @@
 * Using `NSCache` for storing Images, this inturn enhanched the performance of application
 * Implemented `Autolayout` to satisfy the different iPhone screen sizes
 * Used Decorator Design Pattern `Entensions`
+* `Pull to referesh` option is provided
+* `Alert Box` is displayed on any error and enables users to `Retry`
 * Implemented `Unit Test` and `UI Test` Cases
 * Checked in source code into `GIT` and followed unique branch names for each feature
 
