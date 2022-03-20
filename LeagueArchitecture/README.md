@@ -49,6 +49,8 @@ High level front-end architecture of new upload management system. There are a f
 ---
 
 ## Web Services
+Client Server Interaction
+<img width="665" alt="Client Server Interaction" src="https://user-images.githubusercontent.com/18254027/159159059-d7152298-8251-434c-95bf-959a7fcc9644.png">
 
 ---
 
