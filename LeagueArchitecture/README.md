@@ -51,13 +51,13 @@ High level front-end architecture of new upload management system. There are a f
 Client Server Interaction
 <img width="660" alt="Client Server Interaction" src="https://user-images.githubusercontent.com/18254027/159159207-2bdab2b2-d518-4733-a7ab-6de1433ee14a.png">
 
-* getAccessToken(): fetch access tokeen for specific user
+* getAccessToken(): fetch access token for specific user
 * getClaims(): fetch list of user claims
 * getClaim?userid=12345(): fetch specific claim of user with help of query param
-* getDocuments(): fetch list of user documeents
+* getDocuments(): fetch list of user documents
 * getDocument?userid=12345(): fetch specific document of user with help if query param
 * submitClaim(): post new claim
-* uploadNewDocunemt(): post new document data i.e imagee data (multipart/form-data)
+* uploadNewDocunemt(): post new document data i.e image data (multipart/form-data)
 ---
 
 ## Design Patterns
