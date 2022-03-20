@@ -63,6 +63,10 @@ Client Server Interaction
 
 ## Design Patterns
 
+MVVM is the most commonly used architecture for mobile apps. This encourages loosly coupled components and also testing would be made easy
+
+<img width="741" alt="Architecture" src="https://user-images.githubusercontent.com/18254027/159159906-2aa4ae03-7d6e-48d1-80c8-06c5cf9e4054.png">
+
 ---
 
 ## Components
