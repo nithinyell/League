@@ -39,6 +39,7 @@ High level front-end architecture of new upload management system. There are a f
 ---
 
 ## Flow Diagram
+<img width="1017" alt="App Flow" src="https://user-images.githubusercontent.com/18254027/159155866-e4aba1aa-6166-43cd-8827-b574e961d0e6.png">
 
 ---
 
