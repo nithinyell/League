@@ -48,7 +48,7 @@ High level front-end architecture of new upload management system. There are a f
 ---
 
 ## Web Services
-Client Server Interaction
+Client Server Interaction - Amazon S3 or Azure Cloud
 <img width="660" alt="Client Server Interaction" src="https://user-images.githubusercontent.com/18254027/159159207-2bdab2b2-d518-4733-a7ab-6de1433ee14a.png">
 
 * getAccessToken(): fetch access token for specific user
@@ -88,6 +88,7 @@ Models Reference
 ---
 
 ## Class Interaction
+<img width="882" alt="Class interactor" src="https://user-images.githubusercontent.com/18254027/159164092-1fededef-cb3a-4adf-a2f2-31b707bc956f.png">
 
 ---
 
