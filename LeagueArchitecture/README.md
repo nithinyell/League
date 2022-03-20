@@ -82,6 +82,9 @@ Interaction
 
 ## Data Models
 
+Models Reference
+<img width="572" alt="Data Models" src="https://user-images.githubusercontent.com/18254027/159161183-edf4202f-d777-4404-81a8-46fb60369e0b.png">
+
 ---
 
 ## Class Interaction
