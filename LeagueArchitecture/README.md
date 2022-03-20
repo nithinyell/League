@@ -6,8 +6,7 @@
 3. [User Interface](#user-interface)
 4. [Web Services](#web-services)
 5. [Design Patterns](#design-patterns)
-6. [Components](#components)
-7. [Models](#models)
+7. [Data Models](#data-models)
 8. [Class Interaction](#class-interaction)
 9. [Libraries](#libraries)
 
@@ -75,11 +74,13 @@ App Modules help to separate the code and ease updates/change request to apps
 
 ---
 
-## Components
+Interaction
+
+<img width="795" alt="Interaction" src="https://user-images.githubusercontent.com/18254027/159160618-29f4f113-57d9-46cc-b92b-7a3173389f47.png">
 
 ---
 
-## Models
+## Data Models
 
 ---
 
