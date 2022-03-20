@@ -44,6 +44,7 @@ High level front-end architecture of new upload management system. There are a f
 ---
 
 ## User Interface
+<img width="626" alt="User Interface" src="https://user-images.githubusercontent.com/18254027/159158389-30780fe2-a673-4831-b624-1f058c6cfc1d.png">
 
 ---
 
