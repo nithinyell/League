@@ -54,7 +54,9 @@ Client Server Interaction
 
 * getAccessToken(): fetch access tokeen for specific user
 * getClaims(): fetch list of user claims
+* getClaim?userid=12345(): fetch specific claim of user with help of query param
 * getDocuments(): fetch list of user documeents
+* getDocument?userid=12345(): fetch specific document of user with help if query param
 * submitClaim(): post new claim
 * uploadNewDocunemt(): post new document data i.e imagee data (multipart/form-data)
 ---
