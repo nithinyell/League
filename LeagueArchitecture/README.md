@@ -69,6 +69,12 @@ MVVM is the most commonly used architecture for mobile apps. This encourages loo
 
 ---
 
+App Modules help to separate the code and ease updates/change request to apps
+
+<img width="649" alt="App Modules" src="https://user-images.githubusercontent.com/18254027/159160147-7aa12404-8d92-4875-b64e-827eb814480d.png">
+
+---
+
 ## Components
 
 ---
