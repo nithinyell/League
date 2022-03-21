@@ -93,5 +93,7 @@ Models Reference
 ---
 
 ## Libraries
-
+Though I am a big fan of using iOS Native APIS, there are plenty open sources libraries doing amazing job
+* [Alamofire](https://github.com/Alamofire/Alamofire) provided best apis to make service calls
+* Cache implementation for offline data loading
 ---
