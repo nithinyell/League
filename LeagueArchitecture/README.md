@@ -52,13 +52,16 @@ High level front-end architecture of new upload management system. There are a f
 Client Server Interaction - ```Amazon S3 or Azure Cloud```
 <img width="660" alt="Client Server Interaction" src="https://user-images.githubusercontent.com/18254027/159159207-2bdab2b2-d518-4733-a7ab-6de1433ee14a.png">
 
-* getAccessToken(): fetch access token for specific user
-* getClaims(): fetch list of user claims
-* getClaim?userid=12345(): fetch specific claim of user with help of query param
-* getDocuments(): fetch list of user documents
-* getDocument?userid=12345(): fetch specific document of user with help if query param
-* submitClaim(): post new claim
-* uploadNewDocunemt(): post new document data i.e image data (multipart/form-data)
+* GET/accesstoken: fetch access token for specific user
+* GET/getclaims body{"accesstoken": ""}: fetch list of user claims
+* GET/getclaim/{claimid}: fetch specific claim of user with help of query param
+* PUT/updateclaim body{"claimid": }: Update speecific claim
+* GET/getdocuments body{"accesstoken": ""}: fetch list of user documents
+* GET/getdocument/{documentid}: fetch specific document of user with help if query param
+* POST/claim body{<meta data>}: post new claim
+* POST/uploadocument body{<meta data>}: post new document data i.e image data (multipart/form-data)
+* PUT/updatedocument/{documentid}: Update specific document meta data
+* DELETE/document/{documentid}: Delete document 
 ---
 
 ## Design Patterns
