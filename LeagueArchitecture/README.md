@@ -8,7 +8,8 @@
 5. [Design Patterns](#design-patterns)
 7. [Data Models](#data-models)
 8. [Class Interaction](#class-interaction)
-9. [Libraries](#libraries)
+9. [Backlog](#backlog)
+10. [Libraries](#libraries)
 
 ## Agenda
 The most important features in the League platform is the ability to manage uploads. These uploads may exist in a few different places
@@ -91,6 +92,14 @@ Models Reference
 <img width="882" alt="Class interactor" src="https://user-images.githubusercontent.com/18254027/159164092-1fededef-cb3a-4adf-a2f2-31b707bc956f.png">
 
 ---
+
+## Backlog
+* Implement ```api pagination``` to deal with numerous claims in claims list view controller. Same should be followed for documents list
+* Integrate ```encription and decription using AES scripting``` to secure the user data on mobile device
+* ```SSL Pinning should be added in order to escape from middle man attacks
+* Use `Xcode Profiles` to enhance the app performance
+* Add ```telemetry``` and collect data to understand the user activity
+* Implement ```Push Notification``` to knmow the statuc of the claims
 
 ## Libraries
 Though I am a big fan of using iOS Native APIS, there are plenty open sources libraries doing amazing job
