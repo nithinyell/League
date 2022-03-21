@@ -53,15 +53,18 @@ Client Server Interaction - ```Amazon S3 or Azure Cloud```
 <img width="660" alt="Client Server Interaction" src="https://user-images.githubusercontent.com/18254027/159159207-2bdab2b2-d518-4733-a7ab-6de1433ee14a.png">
 
 * GET/accesstoken: fetch access token for specific user
-* GET/getclaims body{"accesstoken": ""}: fetch list of user claims
+* GET/getclaims body{"userid": ""}: fetch list of user claims
 * GET/getclaim/{claimid}: fetch specific claim of user with help of query param
 * PUT/updateclaim body{"claimid": }: Update speecific claim
-* GET/getdocuments body{"accesstoken": ""}: fetch list of user documents
+* GET/getdocuments body{"userid": ""}: fetch list of user documents
 * GET/getdocument/{documentid}: fetch specific document of user with help if query param
 * POST/claim body{<meta data>}: post new claim
 * POST/uploadocument body{<meta data>}: post new document data i.e image data (multipart/form-data)
 * PUT/updatedocument/{documentid}: Update specific document meta data
 * DELETE/document/{documentid}: Delete document 
+
+Supply Access Token in Headers for all service calls
+
 ---
 
 ## Design Patterns
