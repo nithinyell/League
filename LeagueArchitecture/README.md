@@ -96,10 +96,10 @@ Models Reference
 ## Backlog
 * Implement ```api pagination``` to deal with numerous claims in claims list view controller. Same should be followed for documents list
 * Integrate ```encription and decription using AES scripting``` to secure the user data on mobile device
-* ```SSL Pinning should be added in order to escape from middle man attacks
-* Use `Xcode Profiles` to enhance the app performance
+* ```SSL Pinning should be added in order to escape middle man attacks
+* Use ```Xcode Profiles``` to enhance the app performance
 * Add ```telemetry``` and collect data to understand the user activity
-* Implement ```Push Notification``` to knmow the statuc of the claims
+* Implement ```Push Notifications``` to know the statuc of the claims
 
 ## Libraries
 Though I am a big fan of using iOS Native APIS, there are plenty open sources libraries doing amazing job
