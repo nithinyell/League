@@ -99,7 +99,7 @@ Models Reference
 * ```SSL Pinning``` should be added in order to escape middle man attacks
 * Use ```Xcode Profiles``` to enhance the app performance
 * Add ```telemetry``` and collect data to understand the user activity
-* Implement ```Push Notifications``` to know the statuc of the claims
+* Implement ```Push Notifications``` to know the status of the claims
 
 ## Libraries
 Though I am a big fan of using iOS Native APIS, there are plenty open sources libraries doing amazing job
