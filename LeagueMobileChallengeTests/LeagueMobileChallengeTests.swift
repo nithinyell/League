@@ -70,6 +70,11 @@ class MockInteractor: Interactor {
 }
 
 class MockPostModelDelegate: PostsModelDelegate {
+    
+    func fetchLatestPostsFailed() {
+        
+    }
+    
     var posts = [UserPost]()
     func fetchLatestPosts(userPosts: [UserPost]?) {
         if let userPosts = userPosts {
